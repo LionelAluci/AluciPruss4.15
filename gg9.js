@@ -1,48 +1,42 @@
-function Persona(nombre, edad, genero) {
-    this.nombre = nombre;
-    this.edad = edad;
-    this.genero = genero;
+function persona(nombre, edad, genero) {
+    this.nombre = nombre
+    this.edad = edad
+    this.genero = genero
 }
 
-Persona.prototype.obtDetalles = function () {
-    console.log(`Nombre: ${this.nombre}, Edad: ${this.edad}, Género: ${this.genero}`);
-};
-
-function Estudiante(nombre, edad, genero, curso, grupo) {
-    Persona.call(this, nombre, edad, genero);
-    this.curso = curso;
-    this.grupo = grupo;
+persona.prototype.obtDetalles = function () {
+    console.log(this.nombre)
+    console.log(this.edad)
+    console.log(this.genero)
 }
 
-Estudiante.prototype = Object.create(Persona.prototype);
-Estudiante.prototype.constructor = Estudiante;
-
-Estudiante.prototype.registrar = function () {
-    console.log(`${this.nombre} ha sido registrado en el curso ${this.curso}, grupo ${this.grupo}.`);
-};
-
-function Profesor(nombre, edad, genero, asignatura, nivel) {
-    Persona.call(this, nombre, edad, genero);
-    this.asignatura = asignatura;
-    this.nivel = nivel;
+function estudiante(nombre, edad, genero, curso, grupo) {
+    persona.call(this, nombre, edad, genero)
+    this.curso = curso
+    this.grupo = grupo
 }
 
-Profesor.prototype = Object.create(Persona.prototype);
-Profesor.prototype.constructor = Profesor;
+estudiante.prototype = Object.create(persona.prototype)
+profesor.prototype = Object.create(estudiante.prototype)
 
-Profesor.prototype.asignar = function () {
-    console.log(`${this.nombre} imparte la asignatura ${this.asignatura} en nivel ${this.nivel}.`);
-};
+function profesor(nombre, edad, genero, asignatura, nivel) {
+    persona.call(this, nombre, edad, genero)
+    this.asignatura = asignatura
+    this.nivel = nivel
+}
 
 function print() {
-    const persona1 = new Persona("Carlos", 30, "Masculino");
-    persona1.obtDetalles();
+    let p1 = new persona("lean", 32, "macho")
+    p1.obtDetalles();
 
-    const estudiante1 = new Estudiante("Ana", 20, "Femenino", "Matemática", "A");
-    estudiante1.obtDetalles();
-    estudiante1.registrar();
+    let e1 = new persona("catalina", 15, "hembra")
+    e1.obtDetalles();
+    //e1.registrar();
 
-    const profesor1 = new Profesor("Luis", 45, "Masculino", "Física", "Secundaria");
-    profesor1.obtDetalles();
-    profesor1.asignar();
+    let pr1 = new persona("walter", 59, "macho")
+    pr1.obtDetalles();
+    //pr1.asignar();
 }
+
+
+
