@@ -10,8 +10,10 @@ let ingreso=[]
  while (j< ingreso.length && ingreso[j] == ingreso.reverse()[j]) {
     if (j == ingreso.length -1) {
         console.log("es palindromo")
-     }
-     
+    }
  j++
+  else{
+   console.log("no es palindromo")
+  }
  }
  
